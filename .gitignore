@@ -9,3 +9,7 @@ Manifest.toml
 
 # Documenter build output (if docs are added later)
 docs/build/
+
+# Test project artifacts
+documenter_tabs_test/docs/build/
+documenter_tabs_test/build/

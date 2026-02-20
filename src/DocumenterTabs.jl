@@ -231,7 +231,7 @@ function Documenter.HTMLWriter.domify(dctx::DCtx, node::Node, el::TabsBlock)
 
     # Build a stable group key from the *sorted* label set so that all
     # tab groups sharing the same labels sync together via localStorage.
-    group_key = join(sort(el.labels), "\t")
+    group_key = join(sort(el.labels), "|")
 
     # Render label buttons
     label_btns = [
@@ -245,7 +245,7 @@ function Documenter.HTMLWriter.domify(dctx::DCtx, node::Node, el::TabsBlock)
 
     # Render panels by dispatching on each TabPanelBlock child
     panel_divs = map(collect(node.children)) do panel_node
-        domify(dctx, panel_node, panel_node.element)
+        Documenter.HTMLWriter.domify(dctx, panel_node, panel_node.element)
     end
 
     div[
@@ -260,7 +260,7 @@ end
 function Documenter.HTMLWriter.domify(dctx::DCtx, node::Node, el::TabPanelBlock)
     DOM.@tags div
     # Recursively domify the panel's children (code blocks, paragraphs, etc.)
-    inner = domify(dctx, node.children)
+    inner = Documenter.HTMLWriter.domify(dctx, node.children)
     div[
         ".doc-tabs__panel",
         Symbol("data-tab")=>string(el.index),

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Tutorial · Test</title><meta name="title" content="Tutorial · Test"/><meta property="og:title" content="Tutorial · Test"/><meta property="twitter:title" content="Tutorial · Test"/><meta name="description" content="Documentation for Test."/><meta property="og:description" content="Documentation for Test."/><meta property="twitter:description" content="Documentation for Test."/><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../search_index.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../">Test</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li><li class="is-active"><a class="tocitem" href>Tutorial</a><ul class="internal"><li><a class="tocitem" href="#Installation"><span>Installation</span></a></li><li><a class="tocitem" href="#Setup"><span>Setup</span></a></li><li><a class="tocitem" href="#Basic-Usage"><span>Basic Usage</span></a></li><li><a class="tocitem" href="#Code-Tabs-(the-main-use-case)"><span>Code Tabs (the main use case)</span></a></li><li><a class="tocitem" href="#Tab-Syncing"><span>Tab Syncing</span></a></li><li><a class="tocitem" href="#Rich-Tab-Content"><span>Rich Tab Content</span></a></li><li><a class="tocitem" href="#Multiple-Tab-Groups-on-One-Page"><span>Multiple Tab Groups on One Page</span></a></li><li><a class="tocitem" href="#Limitations"><span>Limitations</span></a></li><li><a class="tocitem" href="#Quick-Reference"><span>Quick Reference</span></a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Tutorial</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Tutorial</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/cytsaitw/DocumenterTabs.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/cytsaitw/DocumenterTabs.jl/blob/main/documenter_tabs_test/docs/src/tutorial.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="DocumenterTabs.jl-Tutorial"><a class="docs-heading-anchor" href="#DocumenterTabs.jl-Tutorial">DocumenterTabs.jl Tutorial</a><a id="DocumenterTabs.jl-Tutorial-1"></a><a class="docs-heading-anchor-permalink" href="#DocumenterTabs.jl-Tutorial" title="Permalink"></a></h1><p>This tutorial walks you through setting up and using <strong>DocumenterTabs.jl</strong> to add interactive tab panels to your Julia package documentation.</p><hr/><h2 id="Installation"><a class="docs-heading-anchor" href="#Installation">Installation</a><a id="Installation-1"></a><a class="docs-heading-anchor-permalink" href="#Installation" title="Permalink"></a></h2><p>DocumenterTabs.jl is not yet registered in the General registry. Install it directly from GitHub:</p><pre><code class="language-julia hljs">using Pkg
+Pkg.add(url = &quot;https://github.com/cytsaitw/DocumenterTabs.jl&quot;)</code></pre><p>Or add it to your <code>docs/</code> environment:</p><pre><code class="language-bash hljs">cd docs/
+julia --project -e &#39;using Pkg; Pkg.add(url = &quot;https://github.com/cytsaitw/DocumenterTabs.jl&quot;)&#39;</code></pre><hr/><h2 id="Setup"><a class="docs-heading-anchor" href="#Setup">Setup</a><a id="Setup-1"></a><a class="docs-heading-anchor-permalink" href="#Setup" title="Permalink"></a></h2><p>Open your <code>docs/make.jl</code> and add <code>DocumenterTabs</code>:</p><pre><code class="language-julia hljs">using Documenter
+using DocumenterTabs          # 1. import the package
+using MyPackage               # your package
+
+makedocs(
+    sitename = &quot;MyPackage&quot;,
+    plugins  = [DocumenterTabs.DocumenterTabsPlugin()],   # 2. register the plugin
+    pages    = [
+        &quot;Home&quot;     =&gt; &quot;index.md&quot;,
+        &quot;Tutorial&quot; =&gt; &quot;tutorial.md&quot;,
+    ],
+)
+
+deploydocs(repo = &quot;github.com/MyOrg/MyPackage.jl.git&quot;)</code></pre><p>That is all the configuration you need. No manual asset copying required — the plugin injects its CSS and JavaScript automatically.</p><hr/><h2 id="Basic-Usage"><a class="docs-heading-anchor" href="#Basic-Usage">Basic Usage</a><a id="Basic-Usage-1"></a><a class="docs-heading-anchor-permalink" href="#Basic-Usage" title="Permalink"></a></h2><p>Inside any <code>.md</code> page, write a <code>!!! tabs</code> admonition. Use <code>##</code> headings to define the tab labels, and put the tab content below each heading:</p><pre><code class="language-markdown hljs">!!! tabs
+    ## First Tab
+    Content for the first tab goes here.
+
+    ## Second Tab
+    Content for the second tab goes here.</code></pre><p>The heading level must be <code>##</code> (level 2). The text of each heading becomes the tab label.</p><blockquote><p><strong>Note:</strong> The <code>!!! tabs</code> admonition does <strong>not</strong> display a title bar (unlike <code>!!! note</code>). The <code>##</code> headings inside it are consumed as labels and do not appear as page headings.</p></blockquote><hr/><h2 id="Code-Tabs-(the-main-use-case)"><a class="docs-heading-anchor" href="#Code-Tabs-(the-main-use-case)">Code Tabs (the main use case)</a><a id="Code-Tabs-(the-main-use-case)-1"></a><a class="docs-heading-anchor-permalink" href="#Code-Tabs-(the-main-use-case)" title="Permalink"></a></h2><p>The most common use for DocumenterTabs is showing the same concept in multiple programming languages or API styles side-by-side.</p><p>Write this in your <code>.md</code> file:</p><pre><code class="language-markdown hljs">!!! tabs
+    ## Julia
+    ```julia
+    # Create a vector and compute its sum
+    v = [1, 2, 3, 4, 5]
+    println(sum(v))   # 15
+    ```
+
+    ## Python
+    ```python
+    # Create a list and compute its sum
+    v = [1, 2, 3, 4, 5]
+    print(sum(v))   # 15
+    ```
+
+    ## R
+    ```r
+    # Create a vector and compute its sum
+    v &lt;- c(1, 2, 3, 4, 5)
+    print(sum(v))   # 15
+    ```</code></pre><p>This renders as a tab panel with three tabs: <strong>Julia</strong>, <strong>Python</strong>, and <strong>R</strong>. Each code block is fully syntax-highlighted by Documenter&#39;s normal highlighting pipeline.</p><hr/><h2 id="Tab-Syncing"><a class="docs-heading-anchor" href="#Tab-Syncing">Tab Syncing</a><a id="Tab-Syncing-1"></a><a class="docs-heading-anchor-permalink" href="#Tab-Syncing" title="Permalink"></a></h2><p>If the same set of tab labels appears on <strong>multiple pages</strong> (or multiple places on one page), the selection is <strong>automatically synced</strong> across the entire site.</p><p>For example, if a reader selects the <strong>&quot;Python&quot;</strong> tab anywhere, every other tab group that has a &quot;Python&quot; option will also switch to &quot;Python&quot; — even after navigating to a different page. The preference is stored in <code>localStorage</code> and persists across browser sessions.</p><p>The sync key is determined by the <strong>sorted set of labels</strong>, so these two groups will sync:</p><pre><code class="language-markdown hljs">!!! tabs
+    ## Julia
+    Some Julia code.
+
+    ## Python
+    Some Python code.</code></pre><pre><code class="language-markdown hljs">!!! tabs
+    ## Julia
+    More Julia content on another page.
+
+    ## Python
+    More Python content on another page.</code></pre><p>But this group will <strong>not</strong> sync with the above (different label set):</p><pre><code class="language-markdown hljs">!!! tabs
+    ## Julia
+    Julia only here.
+
+    ## Rust
+    Rust content.</code></pre><hr/><h2 id="Rich-Tab-Content"><a class="docs-heading-anchor" href="#Rich-Tab-Content">Rich Tab Content</a><a id="Rich-Tab-Content-1"></a><a class="docs-heading-anchor-permalink" href="#Rich-Tab-Content" title="Permalink"></a></h2><p>Tab panels are not limited to code blocks. You can put any Markdown content inside:</p><pre><code class="language-markdown hljs">!!! tabs
+    ## Overview
+    Tabs support **bold**, *italic*, and `inline code`.
+
+    You can also have:
+    - Bullet lists
+    - With multiple items
+
+    And even block quotes:
+    &gt; This is a note inside a tab.
+
+    ## Code Example
+    ```julia
+    struct Point
+        x::Float64
+        y::Float64
+    end
+    ```
+
+    ## Math
+    The Euclidean distance between two points is:
+
+    ```math
+    d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+    ```</code></pre><hr/><h2 id="Multiple-Tab-Groups-on-One-Page"><a class="docs-heading-anchor" href="#Multiple-Tab-Groups-on-One-Page">Multiple Tab Groups on One Page</a><a id="Multiple-Tab-Groups-on-One-Page-1"></a><a class="docs-heading-anchor-permalink" href="#Multiple-Tab-Groups-on-One-Page" title="Permalink"></a></h2><p>You can have as many <code>!!! tabs</code> blocks as you like on a single page. They are all independent unless they share the same label set (in which case they sync):</p><pre><code class="language-markdown hljs">## Installation options
+
+!!! tabs
+    ## Package Manager
+    ```bash
+    pkg&gt; add MyPackage
+    ```
+
+    ## Direct URL
+    ```julia
+    Pkg.add(url = &quot;https://github.com/...&quot;)
+    ```
+
+## Usage examples
+
+!!! tabs
+    ## Basic
+    ```julia
+    using MyPackage
+    greet(&quot;world&quot;)
+    ```
+
+    ## Advanced
+    ```julia
+    using MyPackage
+    config = Config(verbose = true)
+    greet(&quot;world&quot;, config)
+    ```</code></pre><hr/><h2 id="Limitations"><a class="docs-heading-anchor" href="#Limitations">Limitations</a><a id="Limitations-1"></a><a class="docs-heading-anchor-permalink" href="#Limitations" title="Permalink"></a></h2><ul><li><p><strong>Search index</strong>: Tab content is currently excluded from Documenter&#39;s built-in search index. Readers will not find content inside tabs via the search bar.</p></li><li><p><strong>Heading levels</strong>: Only <code>##</code> (level-2) headings are recognised as tab labels. Other heading levels inside <code>!!! tabs</code> are treated as regular content.</p></li><li><p><strong>Nesting</strong>: Nested <code>!!! tabs</code> blocks (tabs inside tabs) are not supported.</p></li></ul><hr/><h2 id="Quick-Reference"><a class="docs-heading-anchor" href="#Quick-Reference">Quick Reference</a><a id="Quick-Reference-1"></a><a class="docs-heading-anchor-permalink" href="#Quick-Reference" title="Permalink"></a></h2><table><tr><th style="text-align: right">Syntax element</th><th style="text-align: right">What it does</th></tr><tr><td style="text-align: right"><code>!!! tabs</code></td><td style="text-align: right">Starts a tab group</td></tr><tr><td style="text-align: right"><code>## Label</code></td><td style="text-align: right">Defines a new tab with that label</td></tr><tr><td style="text-align: right">Content below heading</td><td style="text-align: right">Body of that tab panel</td></tr><tr><td style="text-align: right">Same label set on multiple groups</td><td style="text-align: right">Groups stay in sync via <code>localStorage</code></td></tr></table><pre><code class="language-markdown hljs">!!! tabs
+    ## Tab A
+    Content A
+
+    ## Tab B
+    Content B</code></pre><style>/* ==========================================================================
+   DocumenterTabs – Tab Panel Styles
+   Compatible with Documenter.jl light + dark themes
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Container
+   -------------------------------------------------------------------------- */
+.doc-tabs {
+    border: 1px solid var(--documenter-border, hsl(0, 0%, 82%));
+    border-radius: 6px;
+    margin: 1.25em 0;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Label row  (tab buttons)
+   -------------------------------------------------------------------------- */
+.doc-tabs__labels {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    background-color: var(--documenter-sidebar-background, hsl(0, 0%, 96%));
+    border-bottom: 1px solid var(--documenter-border, hsl(0, 0%, 82%));
+    /* hide scrollbar on desktop */
+    scrollbar-width: thin;
+}
+
+.doc-tabs__label {
+    /* reset */
+    appearance: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    /* layout */
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55em 1.2em;
+    /* style */
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--documenter-header-text, hsl(0, 0%, 35%));
+    border-bottom: 3px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease,
+                background-color 0.15s ease;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.doc-tabs__label:hover {
+    color: var(--documenter-link-color, hsl(209, 100%, 45%));
+    background-color: var(--documenter-sidebar-hover, hsl(0, 0%, 92%));
+}
+
+.doc-tabs__label.is-active {
+    color: var(--documenter-link-color, hsl(209, 100%, 45%));
+    border-bottom-color: var(--documenter-link-color, hsl(209, 100%, 45%));
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Panels
+   -------------------------------------------------------------------------- */
+.doc-tabs__panel {
+    display: none;
+    padding: 1.25em 1.5em;
+}
+
+.doc-tabs__panel.is-active {
+    display: block;
+}
+
+/* Panel content resets — stop double-margin on first/last children */
+.doc-tabs__panel > *:first-child { margin-top: 0; }
+.doc-tabs__panel > *:last-child  { margin-bottom: 0; }
+
+/* --------------------------------------------------------------------------
+   Dark-mode overrides (Documenter dark theme sets .theme-dark on <html>)
+   -------------------------------------------------------------------------- */
+.theme-dark .doc-tabs {
+    border-color: var(--documenter-border, hsl(0, 0%, 25%));
+}
+
+.theme-dark .doc-tabs__labels {
+    background-color: var(--documenter-sidebar-background, hsl(0, 0%, 18%));
+    border-bottom-color: var(--documenter-border, hsl(0, 0%, 25%));
+}
+
+.theme-dark .doc-tabs__label {
+    color: var(--documenter-header-text, hsl(0, 0%, 75%));
+}
+
+.theme-dark .doc-tabs__label:hover {
+    background-color: var(--documenter-sidebar-hover, hsl(0, 0%, 22%));
+}
+</style><script>/**
+ * DocumenterTabs — Tab Panel Interactivity
+ *
+ * Features:
+ *  - Click to switch tabs
+ *  - localStorage syncing: tabs with the same data-tabs-group key stay
+ *    in sync across the whole site (e.g. every Julia/Python tab group)
+ */
+(function () {
+    "use strict";
+
+    const STORAGE_PREFIX = "documenter-tabs:";
+
+    /* ------------------------------------------------------------------
+       Activate a specific tab within a container by data-tab index
+    ------------------------------------------------------------------ */
+    function activateTab(container, tabIndex) {
+        const labels = container.querySelectorAll(".doc-tabs__label");
+        const panels = container.querySelectorAll(".doc-tabs__panel");
+
+        labels.forEach((el) => el.classList.remove("is-active"));
+        panels.forEach((el) => el.classList.remove("is-active"));
+
+        const targetLabel = container.querySelector(
+            `.doc-tabs__label[data-tab="${tabIndex}"]`
+        );
+        const targetPanel = container.querySelector(
+            `.doc-tabs__panel[data-tab="${tabIndex}"]`
+        );
+
+        if (targetLabel) targetLabel.classList.add("is-active");
+        if (targetPanel) targetPanel.classList.add("is-active");
+    }
+
+    /* ------------------------------------------------------------------
+       Sync all containers on the page that share the same group key
+    ------------------------------------------------------------------ */
+    function syncGroup(groupKey, tabIndex) {
+        document
+            .querySelectorAll(`.doc-tabs[data-tabs-group="${groupKey}"]`)
+            .forEach((container) => {
+                // Only activate if this tab index exists in this container
+                const target = container.querySelector(
+                    `.doc-tabs__label[data-tab="${tabIndex}"]`
+                );
+                if (target) activateTab(container, tabIndex);
+            });
+    }
+
+    /* ------------------------------------------------------------------
+       Restore saved preference for a group key from localStorage
+    ------------------------------------------------------------------ */
+    function restoreGroup(groupKey) {
+        try {
+            const saved = localStorage.getItem(STORAGE_PREFIX + groupKey);
+            if (saved !== null) syncGroup(groupKey, saved);
+        } catch (_) {
+            // localStorage may be unavailable in some environments
+        }
+    }
+
+    /* ------------------------------------------------------------------
+       Save preference to localStorage
+    ------------------------------------------------------------------ */
+    function saveGroup(groupKey, tabIndex) {
+        try {
+            localStorage.setItem(STORAGE_PREFIX + groupKey, tabIndex);
+        } catch (_) { }
+    }
+
+    /* ------------------------------------------------------------------
+       Initialise all tab containers on the page
+    ------------------------------------------------------------------ */
+    function init() {
+        const containers = document.querySelectorAll(".doc-tabs");
+        const seenGroups = new Set();
+
+        containers.forEach((container) => {
+            // Activate the first tab by default
+            activateTab(container, "0");
+
+            // Attach click handlers
+            container
+                .querySelectorAll(".doc-tabs__label")
+                .forEach((label) => {
+                    label.addEventListener("click", function () {
+                        const tabIndex = this.getAttribute("data-tab");
+                        const groupKey = this.getAttribute("data-tabs-group");
+
+                        syncGroup(groupKey, tabIndex);
+                        saveGroup(groupKey, tabIndex);
+                    });
+                });
+
+            // Collect group keys for restoration pass
+            const groupKey = container.getAttribute("data-tabs-group");
+            if (groupKey) seenGroups.add(groupKey);
+        });
+
+        // Restore saved preferences (runs after all defaults are set)
+        seenGroups.forEach(restoreGroup);
+    }
+
+    /* ------------------------------------------------------------------
+       Entry point — wait for DOM
+    ------------------------------------------------------------------ */
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+    } else {
+        init(); // Already parsed (e.g. deferred script)
+    }
+})();
+</script></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Home</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.16.1 on <span class="colophon-date" title="Friday 20 February 2026 06:24">Friday 20 February 2026</span>. Using Julia version 1.12.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

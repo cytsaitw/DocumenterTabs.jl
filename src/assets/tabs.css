@@ -1,0 +1,101 @@
+/* ==========================================================================
+   DocumenterTabs – Tab Panel Styles
+   Compatible with Documenter.jl light + dark themes
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Container
+   -------------------------------------------------------------------------- */
+.doc-tabs {
+    border: 1px solid var(--documenter-border, hsl(0, 0%, 82%));
+    border-radius: 6px;
+    margin: 1.25em 0;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Label row  (tab buttons)
+   -------------------------------------------------------------------------- */
+.doc-tabs__labels {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    background-color: var(--documenter-sidebar-background, hsl(0, 0%, 96%));
+    border-bottom: 1px solid var(--documenter-border, hsl(0, 0%, 82%));
+    /* hide scrollbar on desktop */
+    scrollbar-width: thin;
+}
+
+.doc-tabs__label {
+    /* reset */
+    appearance: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    /* layout */
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55em 1.2em;
+    /* style */
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--documenter-header-text, hsl(0, 0%, 35%));
+    border-bottom: 3px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease,
+                background-color 0.15s ease;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.doc-tabs__label:hover {
+    color: var(--documenter-link-color, hsl(209, 100%, 45%));
+    background-color: var(--documenter-sidebar-hover, hsl(0, 0%, 92%));
+}
+
+.doc-tabs__label.is-active {
+    color: var(--documenter-link-color, hsl(209, 100%, 45%));
+    border-bottom-color: var(--documenter-link-color, hsl(209, 100%, 45%));
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Panels
+   -------------------------------------------------------------------------- */
+.doc-tabs__panel {
+    display: none;
+    padding: 1.25em 1.5em;
+}
+
+.doc-tabs__panel.is-active {
+    display: block;
+}
+
+/* Panel content resets — stop double-margin on first/last children */
+.doc-tabs__panel > *:first-child { margin-top: 0; }
+.doc-tabs__panel > *:last-child  { margin-bottom: 0; }
+
+/* --------------------------------------------------------------------------
+   Dark-mode overrides (Documenter dark theme sets .theme-dark on <html>)
+   -------------------------------------------------------------------------- */
+.theme-dark .doc-tabs {
+    border-color: var(--documenter-border, hsl(0, 0%, 25%));
+}
+
+.theme-dark .doc-tabs__labels {
+    background-color: var(--documenter-sidebar-background, hsl(0, 0%, 18%));
+    border-bottom-color: var(--documenter-border, hsl(0, 0%, 25%));
+}
+
+.theme-dark .doc-tabs__label {
+    color: var(--documenter-header-text, hsl(0, 0%, 75%));
+}
+
+.theme-dark .doc-tabs__label:hover {
+    background-color: var(--documenter-sidebar-hover, hsl(0, 0%, 22%));
+}

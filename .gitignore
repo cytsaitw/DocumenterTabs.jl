@@ -1,0 +1,11 @@
+# Julia build artifacts
+Manifest.toml
+
+# Editor / OS files
+.DS_Store
+.vscode/
+*.swp
+*~
+
+# Documenter build output (if docs are added later)
+docs/build/

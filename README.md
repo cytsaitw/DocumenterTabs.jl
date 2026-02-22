@@ -1,5 +1,6 @@
 # DocumenterTabs.jl
 
+## Disclaimer: This feature was heavily implemented using Claude Sonnet 4.6.
 A plugin for Julia to group multiple blocks of code in a single panel and use tabs to switch between them.
 This tutorial walks you through setting up and using **DocumenterTabs.jl** to add
 interactive tab panels to your Julia package documentation.

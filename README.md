@@ -1,5 +1,6 @@
-# DocumenterTabs.jl Tutorial
+# DocumenterTabs.jl
 
+A plugin for Julia to group multiple blocks of code in a single panel and use tabs to switch between them.
 This tutorial walks you through setting up and using **DocumenterTabs.jl** to add
 interactive tab panels to your Julia package documentation.
 

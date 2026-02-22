@@ -20,7 +20,7 @@ jobs:
           version: '1'
       - name: Configure doc environment
         run: |
-          julia --project=documenter_tabs_test -e '
+          julia --project=docs -e '
             using Pkg
             Pkg.develop(PackageSpec(path=pwd()))
             Pkg.instantiate()'
@@ -28,4 +28,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCUMENTER_KEY: ${{ secrets.DOCUMENTER_KEY }}
-        run: julia --project=documenter_tabs_test documenter_tabs_test/docs/make.jl
+        run: julia --project=docs docs/make.jl

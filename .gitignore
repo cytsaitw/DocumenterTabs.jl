@@ -7,7 +7,7 @@ Manifest.toml
 *.swp
 *~
 
-# Documenter build output (if docs are added later)
+# Documenter build output
 docs/build/
 
 # Test project artifacts
